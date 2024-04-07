@@ -48,40 +48,6 @@
         autoLogin.user = username;
       };
     };
-    ## ------------------------------------------------------------- ##
-    samba = {
-      openFirewall = true;
-      enable = true;
-      securityType = "user";
-      ### --------------------------------------------------------- ###
-      shares = {
-        home = {
-          path = "/home/gabriel";
-          browseable = "yes";
-          writeable = "yes";
-          "acl allow execute always" = true;
-          "read only" = "no";
-          "valid users" = "gabriel";
-          "create mask" = "0644";
-          "directory mask" = "0755";
-          "force user" = "gabriel";
-          "force group" = "users";
-        };
-        #### ----------------------------------------------------- ####
-        media = {
-          path = "/run/media/gabriel";
-          browseable = "yes";
-          writeable = "yes";
-          "acl allow execute always" = true;
-          "read only" = "no";
-          "valid users" = "gabriel";
-          "create mask" = "0644";
-          "directory mask" = "0755";
-          "force user" = "gabriel";
-          "force group" = "users";
-        };
-      };
-    };
     ## -------------------------------------------------------------- ##
     upower.enable = true;
     power-profiles-daemon.enable = false;
