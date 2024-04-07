@@ -35,16 +35,17 @@
     computers = applyAttrNames {
       "${hostname}-Fix" = self: {
         hostname = "${self}";
-        vm = {
-          cores = 4;
-          threads = 2;
-          memory = 12;
-          diskSize = 512;
-          diskPath = "/var/lib/libvirt/images";
-          restartDm = false;
-          videoVirtio = false;
-          blacklistPcie = "";
-          pcies = [
+        vm = [
+          {
+            cores = 4;
+            threads = 2;
+            memory = 12;
+            diskSize = 512;
+            diskPath = "/var/lib/libvirt/images";
+            restartDm = false;
+            videoVirtio = false;
+            blacklistPcie = "";
+            pcies = [
             {
               pcie = {
                 vmBus = "09";
@@ -89,43 +90,47 @@
               blacklistDriver = true;
               blacklistPcie = false;
             }
-          ];
-        };
+            ];
+          }
+        ];
         modules = [];
       };
       ### --------------------------------------------------------- ### 
       "${hostname}-Lap" = self: {
         hostname = "${self}";
-        vm = {
-          cores = 2;
-          threads = 2;
-          memory = 8;
-          diskSize = 128;
-          diskPath = "/home/${username}/VM/Disk";
-          restartDm = false;
-          videoVirtio = true;
-          blacklistPcie = "";
-          pcies = false;
-        };
+        vm =  [
+          {
+            cores = 2;
+            threads = 2;
+            memory = 8;
+            diskSize = 128;
+            diskPath = "/home/${username}/VM/Disk";
+            restartDm = false;
+            videoVirtio = true;
+            blacklistPcie = "";
+            pcies = false;
+          }
+        ];
         modules = [
           nixos-hardware.nixosModules.asus-battery
-          nixos-hardware.nixosModules.common-cpu-intel
-          nixos-hardware.nixosModules.common-pc
-          nixos-hardware.nixosModules.common-pc-ssd
+            nixos-hardware.nixosModules.common-cpu-intel
+            nixos-hardware.nixosModules.common-pc
+            nixos-hardware.nixosModules.common-pc-ssd
         ];
       };
       "${hostname}-Fra" = self: {
         hostname = "${hostname}-Lap";
-        vm = {
-          cores = 5;
-          threads = 2;
-          memory = 20;
-          diskSize = 128;
-          diskPath = "/home/${username}/VM/Disk";
-          restartDm = false;
-          videoVirtio = false;
-          blacklistPcie = "1002:7480,1002:ab30";
-          pcies = [
+        vm = [
+          {
+            cores = 5;
+            threads = 2;
+            memory = 20;
+            diskSize = 128;
+            diskPath = "/home/${username}/VM/Disk";
+            restartDm = false;
+            videoVirtio = false;
+            blacklistPcie = "1002:7480,1002:ab30";
+            pcies = [
             {
               pcie = {
                 vmBus = "09";
@@ -148,8 +153,9 @@
               blacklistDriver = false;
               blacklistPcie = true;
             }
-          ];
-        };
+            ];
+          }
+        ];
         modules = [
           nixos-hardware.nixosModules.common-cpu-intel
           nixos-hardware.nixosModules.common-pc
