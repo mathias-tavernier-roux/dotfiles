@@ -12,21 +12,30 @@ then {
     ];
 
     extraModprobeConfig = lib.concatStrings ([
-        ''
-          options kvm_intel kvm_amd modeset=1
-        ''
-        (if (vm.blacklistPcie != false) then ''
+      ''
+        options kvm_intel kvm_amd modeset=1
+      ''
+    ] ++ lib.forEach vm (machine:
+
+      (if (machine.blacklistPcie != false)
+      then ''
           options vfio-pci ids=${vm.blacklistPcie}
-        '' else "")
-      ] ++ (if vm.pcies != false
-      then lib.forEach vm.pcies (pcie:
-        if pcie.blacklistDriver then
-          ''
+        ''
+      else "")
+
+    ) ++ lib.forEach vm (machine:
+      lib.concatStrings (if machine.pcies != false
+      then lib.forEach machine.pcies (pcie:
+
+        if pcie.blacklistDriver
+        then ''
             options ${pcie.driver} modeset=0
             blacklist ${pcie.driver}
           ''
         else ""
-      ) else []));
+
+      ) else []))
+    );
 
     kernelParams = [
       "intel_iommu=on"
