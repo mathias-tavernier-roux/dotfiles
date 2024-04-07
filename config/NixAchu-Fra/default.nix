@@ -16,6 +16,8 @@
     supportedFilesystems = [ "ntfs" ];
   };
 
+  services.fprintd.enable = true;
+
   systemd.tmpfiles.rules = [
     "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
   ];
