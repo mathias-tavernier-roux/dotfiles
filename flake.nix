@@ -43,6 +43,7 @@
           diskPath = "/var/lib/libvirt/images";
           restartDm = false;
           videoVirtio = false;
+          blacklistPcie = "";
           pcies = [
             {
               pcie = {
@@ -53,6 +54,7 @@
               };
               driver = ''nouveau'';
               blacklistDriver = true;
+              blacklistPcie = false;
             }
             {
               pcie = {
@@ -63,6 +65,7 @@
               };
               driver = ''nouveau'';
               blacklistDriver = true;
+              blacklistPcie = false;
             }
             {
               pcie = {
@@ -73,6 +76,7 @@
               };
               driver = ''nouveau'';
               blacklistDriver = true;
+              blacklistPcie = false;
             }
             {
               pcie = {
@@ -83,6 +87,7 @@
               };
               driver = ''nouveau'';
               blacklistDriver = true;
+              blacklistPcie = false;
             }
           ];
         };
@@ -99,6 +104,7 @@
           diskPath = "/home/${username}/VM/Disk";
           restartDm = false;
           videoVirtio = true;
+          blacklistPcie = "";
           pcies = false;
         };
         modules = [
