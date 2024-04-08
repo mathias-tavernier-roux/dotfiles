@@ -35,8 +35,12 @@
     computers = applyAttrNames {
       "${hostname}-Fix" = self: {
         hostname = "${self}";
-        vm = [
+        vms = [
           {
+            name = "win11";
+            os = "win11";
+            ssdEmulation = true;
+            isoName = "win11.iso";
             cores = 4;
             threads = 2;
             memory = 12;
@@ -98,8 +102,12 @@
       ### --------------------------------------------------------- ### 
       "${hostname}-Lap" = self: {
         hostname = "${self}";
-        vm =  [
+        vms =  [
           {
+            name = "win11";
+            os = "win11";
+            ssdEmulation = true;
+            isoName = "win11.iso";
             cores = 2;
             threads = 2;
             memory = 8;
@@ -120,8 +128,12 @@
       };
       "${hostname}-Fra" = self: {
         hostname = "${hostname}-Lap";
-        vm = [
+        vms = [
           {
+            name = "win11";
+            os = "win11";
+            ssdEmulation = true;
+            isoName = "win11.iso";
             cores = 5;
             threads = 2;
             memory = 20;
