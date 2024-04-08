@@ -48,7 +48,7 @@
             diskPath = "/var/lib/libvirt/images";
             restartDm = false;
             videoVirtio = false;
-            blacklistPcie = "";
+            blacklistPcie = false;
             pcies = [
             {
               pcie = {
@@ -115,7 +115,7 @@
             diskPath = "/home/${username}/VM/Disk";
             restartDm = false;
             videoVirtio = true;
-            blacklistPcie = "";
+            blacklistPcie = false;
             pcies = false;
           }
         ];
