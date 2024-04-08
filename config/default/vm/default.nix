@@ -88,7 +88,7 @@ then {
   systemd.services.libvirtd.preStart = lib.concatStrings (builtins.map (vm:
     let
       pcies = if vm.pcies != false
-      then builtins.map vm.pcies (pcie: {
+      then builtins.map (pcie: {
         pcie = "${pcie.pcie.bus}:${pcie.pcie.slot}.${pcie.pcie.function}";
         escapePcie = "${pcie.pcie.bus}\\:${pcie.pcie.slot}.${pcie.pcie.function}";
         vmBus = pcie.pcie.vmBus;
@@ -98,7 +98,7 @@ then {
         driver = pcie.driver;
         blacklistDriver = pcie.blacklistDriver;
         blacklistPcie = pcie.blacklistPcie;
-      })
+      }) vm.pcies
       else false;
 
       unbindList = if pcies != false
