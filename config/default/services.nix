@@ -118,8 +118,16 @@
   hardware.bluetooth.enable = true;
   # ------------------------------------------------------------------ #
   networking = {
+    interfaces.eth0.useDHCP = true;
     hostName = "${hostname}";
-    networkmanager.enable = true;
+    wireless = {
+      enable = true;
+      userControlled.enable = true;
+    };
+    nameservers = [
+      "1.1.1.1"
+      "1.0.0.1"
+    ];
   };
   # ------------------------------------------------------------------ #
   sound.enable = true;
