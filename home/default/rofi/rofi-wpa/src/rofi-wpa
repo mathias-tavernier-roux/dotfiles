@@ -1,0 +1,180 @@
+#!/usr/bin/env bash
+
+## Author  : Aditya Shakya (adi1090x)
+## Github  : @adi1090x
+#
+## Applets : MPD (music)
+
+# Import Current Theme
+source "$HOME"/.config/rofi/applets/shared/theme.bash
+theme="$type/$style"
+
+# Theme Elements
+prompt='Network'
+
+if [[ "$theme" == *'type-5'* ]]; then
+	list_col='1'
+	list_row='5'
+	win_width='520px'
+fi
+
+# Options
+layout=`cat ${theme} | grep 'USE_ICON' | cut -d'=' -f2`
+wifis=$(
+  wpa_cli scan *> /dev/null \
+    && wpa_cli scan_results \
+    | grep -v "bssid / frequency" \
+    | grep -v "Selected interface" \
+    | cut -d$'\t' -f 5
+)
+
+psk=($(
+  wpa_cli scan *> /dev/null \
+    && wpa_cli scan_results \
+    | grep -v "bssid / frequency" \
+    | grep -v "Selected interface" \
+    | cut -d$'\t' -f 4 ))
+
+VMS=""
+count=0
+for i in ${wifis}; do
+  option=" ${i}"
+  if [[ ${psk[${count}]} == "[ESS]" ]]; then
+    option=" ${i}"
+  fi
+  VMS+="${option}\n"
+  count=$((count+1))
+done
+
+# Rofi CMD
+rofi_cmd() {
+	echo "$(
+    rofi -theme-str "window {width: $win_width;}" \
+		  -theme-str "listview {columns: $list_col; lines: $list_row;}" \
+		  -theme-str 'textbox-prompt-colon {str: "󰤥";}' \
+		  -dmenu \
+		  -p "$prompt" \
+		  -mesg "Choice Wifi" \
+		  -markup-rows \
+  )"
+}
+
+# Pass variables to rofi dmenu
+run_rofi() {
+  echo "$(echo -e "${1}" | rofi_cmd)"
+}
+
+pass_connect() {
+  up_or_down=null
+  wifi_id="${2}"
+
+  while [[ ${up_or_down} == null || ${up_or_down} == false ]]; do
+    curent=$(
+      wpa_cli list_networks \
+        | grep "$(
+          wpa_cli status \
+            | grep ssid \
+            | grep -v bssid \
+            | cut -d '=' -f 2
+          )" \
+        | cut -d$'\t' -f 1
+    )
+    name="${1}"
+
+    if [[ "${wifi_id}x" != "x" && ${up_or_down} == null ]]; then
+      echo "
+        disconnect
+        set_network ${curent} priority 0
+        set_network ${wifi_id} priority 2
+        reconnect
+      " | wpa_cli > /dev/null
+    elif [[ "${wifi_id}x" != "x" && ${up_or_down} == false ]]; then
+      pass="$(run_rofi "Password")"
+      if [ "${pass}x" == "x" ]; then
+        exit 0
+      fi
+      echo "
+        disconnect
+        disable_network ${wifi_id}
+        set_network ${wifi_id} priority 0
+        remove_network ${wifi_id}
+        add_network
+        set_network ${wifi_id} ssid \"${name}\"
+        set_network ${wifi_id} psk \"${pass}\"
+        set_network ${wifi_id} key_mgmt WPA-PSK
+        set_network ${wifi_id} priority 2
+        enable_network ${wifi_id}
+        reconnect
+      " | wpa_cli > /dev/null
+    else
+      wifi_id=$(wpa_cli add_network | grep -v 'Selected interface')
+      pass="$(run_rofi "Password")"
+      if [ "${pass}x" == "x" ]; then
+        exit 0
+      fi
+      echo "
+        disconnect
+        set_network ${curent} priority 0
+        set_network ${wifi_id} ssid \"${1}\"
+        set_network ${wifi_id} psk \"${pass}\"
+        set_network ${wifi_id} key_mgmt WPA-PSK
+        set_network ${wifi_id} priority 2
+        enable_network ${wifi_id}
+        reconnect
+      " | wpa_cli > /dev/null
+    fi
+
+    sleep 3
+    curent=$(
+      wpa_cli status \
+        | grep ssid \
+        | grep -v bssid \
+        | cut -d '=' -f 2
+      )
+    if [ "${curent}x" == "${name}x" ]; then
+      up_or_down=true
+    else
+      up_or_down=false
+    fi
+  done
+}
+
+without_pass_connect() {
+  echo "
+    disconnect
+    disable_network 0
+    remove_network 0
+    add_network
+    set_network 0 ssid \"${name}\"
+    enable_network 0
+    reconnect
+  " | wpa_cli > /dev/null
+};
+
+# Execute Command
+wifi_conn() {
+  interface=$(iw dev | awk '$1=="Interface"{print $2}')
+  name=${2}
+  lock_icon=${1}
+
+  if [ "${lock_icon}x" == "x" ]; then
+    with_pass_connect
+  elif [ "${lock_icon}x" == "x" ]; then
+      saved_wifi="$(
+        wpa_cli list_networks \
+          | grep -v 'Selected interface' \
+          | grep -v 'network id / ssid /' \
+          | grep "${name}" \
+          | cut -d$'\t' -f 1
+      )"
+
+      if [ "${saved_wifi}x" == "x" ];then
+        pass_connect "${name}"
+      else
+        pass_connect "${name}" "${saved_wifi}"
+      fi
+  fi
+}
+
+# Actions
+wifi_conn $(run_rofi "${VMS}")

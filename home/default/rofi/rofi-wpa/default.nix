@@ -3,23 +3,21 @@
 # Packages #
 #######################################################################
 stdenv.mkDerivation (finalAttrs: {
-  pname = "rofi-wifi-menu";
+  pname = "rofi-wpa";
   version = "unstable-2023-07-16";
   # ----------------------------------------------------------------- #
   src = ./src;
   # ----------------------------------------------------------------- #
   installPhase = ''
     runHook preInstall
-
-    install -D --target-directory=$out/bin/ ./rofi-wifi-menu
-
+    install -D --target-directory=$out/bin/ ./rofi-wpa
     runHook postInstall
   '';
   # ----------------------------------------------------------------- #
   meta = with lib; {
-    description = "rofi wifi manager";
-    homepage = "https://github.com/ericmurphyxyz/rofi-wifi-menu";
+    description = "rofi wpa wifi manager";
     maintainers = [ maintainers.pikatsuto ];
+    licenses = licenses.gpl3;
     platforms = platforms.linux;
   };
 #######################################################################
