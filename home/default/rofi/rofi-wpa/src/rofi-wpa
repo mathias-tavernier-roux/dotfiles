@@ -20,13 +20,20 @@ fi
 
 # Options
 layout=`cat ${theme} | grep 'USE_ICON' | cut -d'=' -f2`
-wifis=$(
+wifis=""
+
+get_wifis() {
   wpa_cli scan *> /dev/null \
     && wpa_cli scan_results \
     | grep -v "bssid / frequency" \
     | grep -v "Selected interface" \
-    | cut -d$'\t' -f 5
-)
+    | cut -d$'\t' -f 5 \
+    | sed 's/ /___/g'
+}
+
+while [ "${wifis}x" == "x" ];do
+  wifis="$(get_wifis)"
+done
 
 psk=($(
   wpa_cli scan *> /dev/null \
@@ -38,6 +45,7 @@ psk=($(
 VMS=""
 count=0
 for i in ${wifis}; do
+  i=$(echo $i | sed 's/___/ /g')
   option=" ${i}"
   if [[ ${psk[${count}]} == "[ESS]" ]]; then
     option=" ${i}"
