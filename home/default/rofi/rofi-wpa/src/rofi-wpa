@@ -55,7 +55,7 @@ wifis=$(
   done
 )
 
-wifis_string=""
+wifis_string="󰖂 WireGuard\n"
 count=0
 for i in ${wifis}; do
   i=$(echo $i | sed 's/___/ /g')
@@ -173,8 +173,47 @@ connect() {
   done
 }
 
+get_wireguard() {
+  vpn="aaa"
+  while [ "${vpn}x" != "x" ]; do
+    vpn_list=""
+
+    for i in $(
+      ls /etc/wireguard/ \
+        | grep '.conf' \
+        | sed 's/.conf//g'
+    ); do
+      if [ "$(
+        ip -br a \
+          | grep ${i}
+      )x" == "x" ]; then
+        vpn_list+=" ${i}\n"
+      else
+        vpn_list+=" ${i}\n"
+      fi
+    done
+
+    vpn=$(run_rofi "${vpn_list::-2}")
+    vpn_name=$(echo "${vpn}" | cut -d ' ' -f 2)
+
+    if [ "${vpn}x" == "x" ]; then
+      exit 0
+    fi
+
+    if [ "$(echo ${vpn_name} | cut -d ' ' -f 1 2> /dev/null)" == "" ];then
+      sudo wg-quick up ${vpn_name}
+    else
+      sudo wg-quick down ${vpn_name}
+    fi
+  done
+}
+
 # Execute Command
 wifi_conn() {
+  if [ "${1} ${2}x" == "󰖂 WireGuardx" ]; then
+    get_wireguard
+    exit 0
+  fi
   interface=$(iw dev | awk '$1=="Interface"{print $2}')
   name=${2}
   lock_icon=${1}
@@ -204,4 +243,4 @@ wifi_conn() {
 }
 
 # Actions
-wifi_conn $(run_rofi "${wifis_string}")
+wifi_conn $(run_rofi "${wifis_string::-2}")
