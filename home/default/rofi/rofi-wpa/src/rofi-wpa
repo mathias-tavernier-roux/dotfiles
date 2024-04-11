@@ -36,7 +36,7 @@ get_psk() {
     && wpa_cli scan_results \
     | grep -v "bssid / frequency" \
     | grep -v "Selected interface" \
-    | grep -v "${1}" \
+    | grep "${1}" \
     | cut -d$'\t' -f 4)"
 }
 
@@ -49,7 +49,7 @@ wifis=$(
   for i in ${wifis}; do
     is_in=false
     if [[ ! ${wifi_list[*]} =~ ${i} && "${i}" != *\x00* ]]; then
-      wifi_list+=("${i}")
+      wifi_list+=("${i} ")
       echo ${i}
     fi
   done
@@ -60,7 +60,7 @@ count=0
 for i in ${wifis}; do
   i=$(echo $i | sed 's/___/ /g')
   option=" ${i}"
-  if [[ $(get_psk ${i}) != "[WPA"* ]]; then
+  if [[ $(get_psk ${i}) == "[WPA"* ]]; then
     option=" ${i}"
   fi
   wifis_string+="${option}\n"
@@ -113,6 +113,13 @@ connect() {
     elif [[ "${wifi_id}x" != "x" && ${up_or_down} == false ]]; then
       pass="$(run_rofi "Password")"
       if [ "${pass}x" == "x" ]; then
+        echo "
+          disconnect
+          disable_network ${wifi_id}
+          set_network ${wifi_id} priority 0
+          remove_network ${wifi_id}
+          reconnect
+        " | wpa_cli > /dev/null
         exit 0
       fi
       echo "
@@ -130,9 +137,16 @@ connect() {
       " | wpa_cli > /dev/null
     else
       wifi_id=$(wpa_cli add_network | grep -v 'Selected interface')
-      if [ ${with_pass} ]; then
+      if [ "${with_pass}x" == "true" ]; then
         pass="$(run_rofi "Password")"
         if [ "${pass}x" == "x" ]; then
+          echo "
+            disconnect
+            disable_network ${wifi_id}
+            set_network ${wifi_id} priority 0
+            remove_network ${wifi_id}
+            reconnect
+          " | wpa_cli > /dev/null
           exit 0
         fi
         echo "
@@ -219,11 +233,15 @@ wifi_conn() {
   lock_icon=${1}
   with_pass=true
 
+  if [[ "${name}x" == "x" && "${lock_icon}x" != "x" ]]; then
+    name=${lock_icon}
+  fi
+
   if [ "${name}x" == "x" ]; then
     exit 0
   fi
 
-  if [ "${lock_icon}x" == "x" ]; then
+  if [ "${lock_icon}x" != "x" ]; then
     with_pass=false
   fi
 
