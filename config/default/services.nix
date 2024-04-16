@@ -29,6 +29,7 @@
       enable = true;
       layout = "fr";
       xkbOptions = "eurosign:e,caps:escape";
+      videoDrivers = [ "ati" ];
       ### --------------------------------------------------------- ###
       libinput = {
         enable = true;

@@ -13,6 +13,8 @@
     };
     ## ------------------------------------------------------------- ##
     fish.enable = true;
+    ## ------------------------------------------------------------- ##
+    corectrl.enable = true;
   };
 #########
 # Fonts #
@@ -70,6 +72,8 @@
       polkit
       nix-direnv
       fishPlugins.bass
+      droidcam
+      android-tools
 
       ### System -------------------------------------------------- ###
       modemmanager
@@ -81,6 +85,7 @@
       ldacbt
       xwaylandvideobridge
       coreutils
+      v4l-utils
 
       ### Dev ----------------------------------------------------- ###
       jdk19
