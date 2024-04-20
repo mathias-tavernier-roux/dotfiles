@@ -22,13 +22,30 @@ or other application using the libvirt API.
   <vcpu placement='static'>{{ vm.vcore }}</vcpu>
   <sysinfo type="smbios">
     <bios>
-      <entry name="vendor">INTEL</entry>
-      <entry name="version">1.0.0</entry>
+      <entry name="vendor">LENOVO</entry>
     </bios>
     <system>
-      <entry name="manufacturer">ASUS</entry>
-      <entry name="product">ROG</entry>
+      <entry name="manufacturer">Microsoft</entry>
+      <entry name="product">Windows11</entry>
+      <entry name="version">22H2</entry>
     </system>
+    <baseBoard>
+      <entry name="manufacturer">LENOVO</entry>
+      <entry name="product">20BE0061MC</entry>
+      <entry name="version">0B98401 Pro</entry>
+      <entry name="serial">5nc6CTzn6M2s9C</entry>
+    </baseBoard>
+    <chassis>
+      <entry name="manufacturer">Dell Inc.</entry>
+      <entry name="version">2.12</entry>
+      <entry name="serial">5cz6CnT6n2s9MC</entry>
+      <entry name="asset">40000101</entry>
+      <entry name="sku">Type3Sku1</entry>
+    </chassis>
+    <oemStrings>
+      <entry>myappname:some arbitrary data</entry>
+      <entry>otherappname:more arbitrary data</entry>
+    </oemStrings>
   </sysinfo>
   <os>
     <type arch='x86_64' machine='pc-q35-8.1'>hvm</type>
