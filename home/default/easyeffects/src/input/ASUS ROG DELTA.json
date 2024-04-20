@@ -722,8 +722,7 @@
         },
         "plugins_order": [
             "rnnoise#0",
-            "equalizer#0",
-            "speex#0"
+            "equalizer#0"
         ],
         "rnnoise#0": {
             "bypass": false,
@@ -734,20 +733,6 @@
             "release": 20.0,
             "vad-thres": 50.0,
             "wet": 0.0
-        },
-        "speex#0": {
-            "bypass": false,
-            "enable-agc": true,
-            "enable-denoise": false,
-            "enable-dereverb": false,
-            "input-gain": 0.0,
-            "noise-suppression": -70,
-            "output-gain": 5.6,
-            "vad": {
-                "enable": true,
-                "probability-continue": 90,
-                "probability-start": 95
-            }
         }
     }
 }
