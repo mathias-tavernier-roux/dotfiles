@@ -67,6 +67,7 @@
       (pkgs.callPackage ./hyprwal { })
       (pkgs.callPackage ./writable_configs { })
       wpgtk
+      xorg.xhost
 
       ### Volume -------------------------------------------------- ###
       pavucontrol
