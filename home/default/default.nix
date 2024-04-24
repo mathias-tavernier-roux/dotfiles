@@ -76,9 +76,7 @@
 
       ### Messaging ----------------------------------------------- ###
       telegram-desktop
-      (pkgs.discord.override {
-        withVencord = true;
-      })
+      vesktop 
       xwaylandvideobridge
       linuxKernel.packages.linux_latest_libre.v4l2loopback
       teams-for-linux
