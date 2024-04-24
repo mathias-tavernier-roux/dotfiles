@@ -88,6 +88,7 @@
       kitty
       gnumake
       python311
+      rpi-imager
 
       ### Games --------------------------------------------------- ###
       minecraft
