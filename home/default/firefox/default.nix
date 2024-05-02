@@ -3,7 +3,7 @@
 #########
 # Files #
 #######################################################################
-  home.file.easyeffects_configs = {
+  home.file.firefox_configs = {
     source = ./src;
     target = ".mozilla_tmp";
     recursive = true;
