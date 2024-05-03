@@ -119,7 +119,6 @@
   hardware.bluetooth.enable = true;
   # ------------------------------------------------------------------ #
   networking = {
-    interfaces.eth0.useDHCP = true;
     hostName = "${hostname}";
     wireless = {
       enable = true;
