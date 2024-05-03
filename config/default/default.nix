@@ -71,6 +71,7 @@
       "wheel"
       "corectrl"
     ];
+    initialPassword = "admin";
   };
 ##################
 # Virtualisation #
