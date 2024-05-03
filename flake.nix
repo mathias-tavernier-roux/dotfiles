@@ -4,8 +4,18 @@
 #######################################################################
   description = "Pikatsuto dotfiles";
   # ----------------------------------------------------------------- #
+  nixConfig = {
+    extra-substituters = [
+      "https://nix-community.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+  };
+  # ----------------------------------------------------------------- #
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     ## ------------------------------------------------------------- ##
     hosts.url = "github:StevenBlack/hosts";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
@@ -21,6 +31,7 @@
   outputs = {
     self,
     nixpkgs,
+    nixpkgs-unstable,
     nixos-hardware,
     home-manager,
     hosts,
@@ -31,6 +42,16 @@
     hostname = "NixAchu";
 
     applyAttrNames = builtins.mapAttrs (name: f: f name);
+
+    pkgs-settings = {
+      inherit system;
+      config.allowUnfree = true;
+    };
+    pkgs = import nixpkgs (pkgs-settings // {
+      overlays = [(_: _: {
+        unstable = import nixpkgs-unstable pkgs-settings;
+      })];
+    });
 
     computers = applyAttrNames {
       "${hostname}-Fix" = self: {
@@ -193,6 +214,10 @@
   {
     nixosConfigurations = (nixpkgs.lib.genAttrs (builtins.attrNames computers)
     (name: nixpkgs.lib.nixosSystem {
+      specialArgs = {
+        inherit pkgs;
+      };
+      #### ----------------------------------------------------- ####
       inherit system;
       #### ----------------------------------------------------- ####
       modules = default_modules ++ computers."${name}".modules ++ [

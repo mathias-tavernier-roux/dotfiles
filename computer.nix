@@ -6,8 +6,7 @@
 #######################################################################
   imports = [
     (import ./config {
-      inherit computer;
-      inherit username;
+      inherit computer username;
     })
     ## ------------------------------------------------------------- ##
     ./hardware/${computer.hostname}.nix
