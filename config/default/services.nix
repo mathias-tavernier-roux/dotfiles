@@ -70,11 +70,56 @@
     hybrid-sleep.enable = false;
   };
   # ------------------------------------------------------------------ #
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-hyprland
-    ];
+  xdg = {
+    portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-hyprland
+      ];
+    };
+    mime.defaultApplications = {
+      "application/zip" = [
+        "xarchiver.desktop"
+        "unzip"
+      ];
+      "text/*" = [
+        "neovim.desktop"
+        "code.desktop"
+      ];
+      "application/pdf" = [
+        "qpdfview.desktop"
+        "firefox.desktop"
+      ];
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = [
+        "onlyoffice.desktop"
+        "libreoffice.desktop"
+      ];
+      "application/vnd.oasis.opendocument.text" = [
+        "libreoffice.desktop"
+        "onlyoffice.desktop"
+      ];
+      "image/png" = [
+        "viewnior.desktop"
+        "feh.desktop"
+      ];
+      "image/jpg" = [
+        "viewnior.desktop"
+        "feh.desktop"
+      ];
+      "image/jpeg" = [
+        "viewnior.desktop"
+        "feh.desktop"
+      ];
+      "image/gif" = [
+        "viewnior.desktop"
+        "feh.desktop"
+      ];
+      "image/webm" = [
+        "viewnior.desktop"
+        "feh.desktop"
+      ];
+      "application/vnd.microsoft.portable-executable" = "wine";
+    };
   };
   # ------------------------------------------------------------------ #
   programs = {
