@@ -102,7 +102,7 @@
       libreoffice
       onlyoffice-bin
       xarchiver
-      zathura
+      qpdfview
       mpv
       mpc-cli
       youtube-dl
