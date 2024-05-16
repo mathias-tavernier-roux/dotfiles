@@ -98,6 +98,7 @@
 
       ### Misc ---------------------------------------------------- ###
       pinta
+      krita
       neofetch
       libreoffice
       onlyoffice-bin

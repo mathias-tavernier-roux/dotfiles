@@ -63,11 +63,17 @@
     };
   };
   # ------------------------------------------------------------------ #
-  systemd.targets = {
-    sleep.enable = false;
-    suspend.enable = false;
-    hibernate.enable = false;
-    hybrid-sleep.enable = false;
+  systemd = {
+    user.services = {
+      opentabletdriver.enable = true;
+    };
+    ## -------------------------------------------------------------- ##
+    targets = {
+      sleep.enable = false;
+      suspend.enable = false;
+      hibernate.enable = false;
+      hybrid-sleep.enable = false;
+    };
   };
   # ------------------------------------------------------------------ #
   xdg = {

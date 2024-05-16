@@ -29,6 +29,8 @@
     stateVersion = "23.11";
   };
   # ----------------------------------------------------------------- #
+  hardware.opentabletdriver.enable = true;
+  # ----------------------------------------------------------------- #
   documentation.dev.enable = true;
   nix = {
     gc = {
