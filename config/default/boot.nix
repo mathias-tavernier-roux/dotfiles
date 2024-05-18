@@ -32,6 +32,8 @@
     extraModulePackages = with config.boot.kernelPackages; [
       v4l2loopback
     ];
+
+    extraModprobeConfig = "options hid_xpadneo quirks=B4:0E:DE:4B:06:94+32";
     
     kernelModules = [
       "v4l2loopback"

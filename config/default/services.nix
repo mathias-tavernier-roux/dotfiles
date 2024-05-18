@@ -167,7 +167,13 @@
     '';
   };
   # ------------------------------------------------------------------ #
-  hardware.bluetooth.enable = true;
+  hardware = {
+    xpadneo.enable = true;
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
+  };
   # ------------------------------------------------------------------ #
   networking = {
     hostName = "${hostname}";
