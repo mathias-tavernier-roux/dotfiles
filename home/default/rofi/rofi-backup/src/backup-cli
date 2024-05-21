@@ -150,6 +150,7 @@ push() {
     }
     
     DELETED_FILES=""
+    echo "$(get_deleted_files)x"
     if [ "$(get_deleted_files)x" != "x" ]; then
       DELETED_FILES="$(format "get_deleted_files")"
       DELETED_FILES=" RESTORE\n DELETE\n${DELETED_FILES::-2}"
@@ -234,8 +235,8 @@ sync() {
 
 sync_loop() {
   while true; do
-    sync
-    sleep 300
+    sync ${1}
+    sleep 30
   done
 }
 
