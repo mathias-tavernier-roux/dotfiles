@@ -53,6 +53,7 @@
       rofi-bluetooth
       (pkgs.callPackage ./rofi/rofi-wpa { })
       (pkgs.callPackage ./rofi/rofi-mixer { })
+      (pkgs.callPackage ./rofi/rofi-backup { })
       waybar
       libnotify
       dunst
@@ -114,7 +115,6 @@
       glib
       viewnior
       cinnamon.nemo-with-extensions
-      nextcloud-client
       wf-recorder
       wl-clipboard
       ffmpeg
@@ -137,6 +137,7 @@
       imagemagick
       wineWowPackages.waylandFull
       freerdp
+      sshfs
     ];
   };
 #######################################################################
