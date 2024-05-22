@@ -361,7 +361,7 @@
             },
             "mode": "IIR",
             "num-bands": 32,
-            "output-gain": 9.3,
+            "output-gain": 0.0,
             "pitch-left": 0.0,
             "pitch-right": 0.0,
             "right": {
@@ -722,7 +722,8 @@
         },
         "plugins_order": [
             "rnnoise#0",
-            "equalizer#0"
+            "equalizer#0",
+            "speex#0"
         ],
         "rnnoise#0": {
             "bypass": false,
@@ -733,6 +734,20 @@
             "release": 20.0,
             "vad-thres": 50.0,
             "wet": 0.0
+        },
+        "speex#0": {
+            "bypass": false,
+            "enable-agc": false,
+            "enable-denoise": false,
+            "enable-dereverb": false,
+            "input-gain": 0.0,
+            "noise-suppression": -70,
+            "output-gain": 10.0,
+            "vad": {
+                "enable": true,
+                "probability-continue": 90,
+                "probability-start": 95
+            }
         }
     }
 }
