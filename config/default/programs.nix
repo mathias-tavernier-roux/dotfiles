@@ -74,6 +74,7 @@
       fishPlugins.bass
       droidcam
       android-tools
+      gnome.gnome-software
 
       ### System -------------------------------------------------- ###
       modemmanager
