@@ -57,7 +57,6 @@
       waybar
       libnotify
       dunst
-      screen
       btop
       xdg-user-dirs
       pywal
@@ -82,16 +81,13 @@
       vesktop 
       xwaylandvideobridge
       linuxKernel.packages.linux_latest_libre.v4l2loopback
-      teams-for-linux
 
       ### Dev ----------------------------------------------------- ###
       jetbrains.phpstorm
       jetbrains.pycharm-professional
       vscode
       kitty
-      gnumake
       python311
-      rpi-imager
 
       ### Games --------------------------------------------------- ###
       minecraft
@@ -102,17 +98,13 @@
       krita
       neofetch
       libreoffice
-      onlyoffice-bin
       xarchiver
       qpdfview
       mpv
       mpc-cli
       youtube-dl
       firefox
-      chromium
       vim
-      gcc
-      glib
       viewnior
       cinnamon.nemo-with-extensions
       wf-recorder
