@@ -742,7 +742,7 @@
             "enable-dereverb": false,
             "input-gain": 0.0,
             "noise-suppression": -70,
-            "output-gain": 10.0,
+            "output-gain": 16.4,
             "vad": {
                 "enable": true,
                 "probability-continue": 90,
