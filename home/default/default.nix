@@ -75,6 +75,7 @@
       rofi-pulse-select
       (pkgs.callPackage ./rofi/rofi-beats { })
       easyeffects
+      pulseaudio
 
       ### Messaging ----------------------------------------------- ###
       telegram-desktop
