@@ -361,7 +361,7 @@
             },
             "mode": "IIR",
             "num-bands": 32,
-            "output-gain": 0.0,
+            "output-gain": 15.1,
             "pitch-left": 0.0,
             "pitch-right": 0.0,
             "right": {
@@ -727,8 +727,8 @@
         ],
         "rnnoise#0": {
             "bypass": false,
-            "enable-vad": false,
-            "input-gain": 5.0,
+            "enable-vad": true,
+            "input-gain": 20.0,
             "model-path": "",
             "output-gain": 0.0,
             "release": 20.0,
@@ -742,7 +742,7 @@
             "enable-dereverb": false,
             "input-gain": 0.0,
             "noise-suppression": -70,
-            "output-gain": 16.4,
+            "output-gain": 0.0,
             "vad": {
                 "enable": true,
                 "probability-continue": 90,
