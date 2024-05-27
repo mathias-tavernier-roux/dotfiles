@@ -20,7 +20,6 @@
     ./libreoffice
     ./easyeffects
     ./vencord
-    ./firefox
 
     ## System ------------------------------------------------------ ##
     ./fish

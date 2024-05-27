@@ -33,19 +33,21 @@ for CONFIG_PATH in ${CONFIGS_TO_COPY[@]}; do
   copy_file ${CONFIG_PATH}
 done
 
-# Copy if not exist
-EDITABLE_CONFIGS_TO_COPY=(
-  ~/.mozilla
-)
+# # Copy if not exist
+# EDITABLE_CONFIGS_TO_COPY=(
+#   ~/.mozilla
+# )
 
-for CONFIG_PATH in ${EDITABLE_CONFIGS_TO_COPY}; do
-  [[ ! -f ${CONFIG_PATH} && ! -d ${CONFIG_PATH} ]] \
-    && copy_file ${CONFIG_PATH}
-done
+# for CONFIG_PATH in ${EDITABLE_CONFIGS_TO_COPY}; do
+#   [[ ! -f ${CONFIG_PATH} && ! -d ${CONFIG_PATH} ]] \
+#     && copy_file ${CONFIG_PATH}
+# done
 
 # Setup no package programs
 lvim_install() {
-  no | LV_BRANCH='release-1.3/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)
+  no | LV_BRANCH='release-1.3/neovim-0.9' bash <( \
+    curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh \
+  )
 }
 
 [ ! -d "${HOME}/.config/lvim/" ] \
