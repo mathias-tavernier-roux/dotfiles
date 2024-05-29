@@ -48,7 +48,7 @@
       "format-wifi": "{icon}",
       "format-ethernet": "󰈀",
       "format-disconnected": "󰤭",
-      "tooltip-format": "{essid}",
+      "tooltip-format": "󰈀",
       "on-click": "rofi-wpa",
       "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"]
     },
@@ -57,7 +57,7 @@
       "format-on": "",
       "format-off": "!",
       "on-click": "rofi-bluetooth",
-      "tooltip-format": "{status}"
+      "tooltip-format": ""
     },
     "custom/vm": {
       "tooltip" : false,
