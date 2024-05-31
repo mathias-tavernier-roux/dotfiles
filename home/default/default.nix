@@ -39,7 +39,7 @@
     username = "${username}";
     homeDirectory = "/home/${username}";
     ## ------------------------------------------------------------- ##
-    stateVersion = "23.11";
+    stateVersion = "24.05";
     sessionVariables = {
       EDITOR = "ide";
     };
@@ -89,7 +89,6 @@
       python311
 
       ### Games --------------------------------------------------- ###
-      minecraft
       prismlauncher
 
       ### Misc ---------------------------------------------------- ###

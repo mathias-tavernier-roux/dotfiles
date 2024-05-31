@@ -26,28 +26,32 @@
       jack.enable = true;
     };
     ## ------------------------------------------------------------- ##
-    xserver = {
+    libinput = {
       enable = true;
-      layout = "fr";
-      xkbOptions = "eurosign:e,caps:escape";
-      videoDrivers = [ "ati" ];
-      ### --------------------------------------------------------- ###
-      libinput = {
+      touchpad.tapping = true;
+      touchpad.naturalScrolling = true;
+    };
+    ## ------------------------------------------------------------- ##
+    displayManager = {
+      sddm = {
         enable = true;
-        touchpad.tapping = true;
-        touchpad.naturalScrolling = true;
+        wayland.enable = true;
+        autoNumlock = true;
+        autoLogin.relogin = true;
       };
       ### --------------------------------------------------------- ###
-      displayManager = {
-        sddm = {
-          enable = true;
-          wayland.enable = true;
-          autoNumlock = true;
-          autoLogin.relogin = true;
-        };
-        defaultSession = "hyprland";
-        autoLogin.enable = true;
-        autoLogin.user = username;
+      defaultSession = "hyprland";
+      autoLogin.enable = true;
+      autoLogin.user = username;
+    };
+    ## ------------------------------------------------------------- ##
+    xserver = {
+      enable = true;
+      videoDrivers = [ "ati" ];
+      ### --------------------------------------------------------- ###
+      xkb = {
+        layout = "fr";
+        options = "eurosign:e,caps:escape";
       };
     };
     ## -------------------------------------------------------------- ##

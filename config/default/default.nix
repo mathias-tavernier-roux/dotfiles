@@ -26,7 +26,7 @@
 #######################################################################
   system = {
     copySystemConfiguration = false;
-    stateVersion = "23.11";
+    stateVersion = "24.05";
   };
   # ----------------------------------------------------------------- #
   hardware.opentabletdriver.enable = true;

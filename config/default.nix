@@ -6,8 +6,7 @@
 #######################################################################
   imports = [
     (import ./default {
-      inherit computer;
-      inherit username;
+      inherit computer username;
     })
     ./${computer.hostname}
   ];
