@@ -18,7 +18,6 @@
     ./git
     ./lvim
     ./libreoffice
-    ./easyeffects
     ./vencord
 
     ## System ------------------------------------------------------ ##
