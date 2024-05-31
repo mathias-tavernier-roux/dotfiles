@@ -142,7 +142,7 @@ connect() {
     " | wpa_cli > /dev/null
 
     save_network
-    sleep 10
+    sleep 15
   else
     WIFI_ID=$(wpa_cli add_network | grep -v 'Selected interface')
   fi
@@ -183,7 +183,7 @@ connect() {
     fi
 
     save_network
-    sleep 10
+    sleep 15
   done
 
   [ "$(get_curent)x" == "${SSID}x" ] && exit 0
