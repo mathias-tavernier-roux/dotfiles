@@ -34,8 +34,8 @@ layout=`cat ${theme} | grep 'USE_ICON' | cut -d'=' -f2`
 option_1="󰎈 Lofi Naruto"
 option_2="󰎈 Lofi Girl"
 option_3="󰎈 Lofi Animal Crossing"
-option_4="󰎈 Lofi Zelda"
-option_5="󰎈 Lofi Anime"
+option_4="󰎈 Lofi Undertale"
+option_5=" Like YT Music"
 option_6="󰓛 Stop"
 
 # Toggle Actions
@@ -55,7 +55,7 @@ rofi_cmd() {
 	rofi -theme-str "listview {columns: $list_col; lines: $list_row;}" \
 		-theme-str 'textbox-prompt-colon {str: "";}' \
 		-dmenu \
-		-p "$prompt" \
+		-p "Music" \
 		-mesg "$mesg" \
 		${active} ${urgent} \
 		-markup-rows \
@@ -70,15 +70,15 @@ run_rofi() {
 # Execute Command
 run_cmd() {
 	if [[ "$1" == '--opt1' ]]; then
-		URL="https://youtu.be/dd-bYJk8CtM"
+		URL="https://youtu.be/5Z8Fifbu0eM"
 	elif [[ "$1" == '--opt2' ]]; then
 		URL="https://youtu.be/jfKfPfyJRdk"
 	elif [[ "$1" == '--opt3' ]]; then
-		URL="https://youtu.be/MlvPoNMa8ug"
+		URL="https://youtu.be/rp3rfIDpNWg"
 	elif [[ "$1" == '--opt4' ]]; then
-		URL="https://youtu.be/kFDJ-zskFhk"
+		URL="https://youtu.be/A7vMrjsBMTI"
 	elif [[ "$1" == '--opt5' ]]; then
-		URL="https://youtu.be/OrBOBDeQnwQ"
+		URL="https://music.youtube.com/playlist?list=LM"
 	fi
 
   pkill -f radio-mpv
