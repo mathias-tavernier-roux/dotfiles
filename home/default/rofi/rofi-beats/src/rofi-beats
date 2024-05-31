@@ -9,7 +9,7 @@
 source "$HOME"/.config/rofi/applets/shared/theme.bash
 theme="$type/$style"
 
-VOLUME=100
+VOLUME=70
 
 # Theme Elements
 status="`mpc status`"
