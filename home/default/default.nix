@@ -121,7 +121,6 @@
       remmina
       pywal
       swaybg
-      bottles
       imagemagick
       wineWowPackages.waylandFull
       freerdp
