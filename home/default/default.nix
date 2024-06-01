@@ -94,7 +94,7 @@
       krita
       neofetch
       libreoffice
-      xarchiver
+      gnome.file-roller
       qpdfview
       mpv
       mpc-cli
