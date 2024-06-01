@@ -53,6 +53,7 @@ format() {
 }
 
 run_rofi() {
+  focus-rofi &
   echo -e "${1}" \
     | rofi -theme-str "textbox-prompt-colon {str: \"${ICON}\";}" \
       -dmenu \

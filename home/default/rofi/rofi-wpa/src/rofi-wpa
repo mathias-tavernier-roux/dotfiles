@@ -38,6 +38,7 @@ format() {
 }
 
 run_rofi() {
+  focus-rofi &
   echo -e "${1}" \
     | rofi -theme-str "window {width: 520px;}" \
       -theme-str "listview {columns: 1; lines: 5;}" \

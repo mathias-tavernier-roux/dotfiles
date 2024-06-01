@@ -1,20 +1,23 @@
 #!/bin/sh
 
 menu(){
-	printf "Sink\n"
-	printf "Source\n"
+	printf "Heardphone\n"
+	printf "Microphone\n"
 }
 
 main() {
+  focus-rofi &
 	choice=$(menu | rofi -dmenu | cut -d. -f1)
 
 	case $choice in
-		"Sink")
+		"Heardphone")
+      focus-rofi &
 			rofi-pulse-select sink
       main
 			break
 			;;
-		"Source")
+		"Microphone")
+      focus-rofi &
 			rofi-pulse-select source
       main
 			break

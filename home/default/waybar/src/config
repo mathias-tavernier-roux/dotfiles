@@ -49,20 +49,20 @@
       "format-ethernet": "󰈀",
       "format-disconnected": "󰤭",
       "tooltip-format": "󰈀",
-      "on-click": "rofi-wpa",
+      "on-click": "rofi-wpa & focus-rofi",
       "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"]
     },
     "bluetooth": {
       "format-alt": "",
       "format-on": "",
       "format-off": "!",
-      "on-click": "rofi-bluetooth",
+      "on-click": "rofi-bluetooth & focus-rofi",
       "tooltip-format": ""
     },
     "custom/vm": {
       "tooltip" : false,
       "format": "",
-      "on-click": "rofi-vm"
+      "on-click": "rofi-vm & focus-rofi"
     },
     "pulseaudio": {
       "format": "{icon}",
@@ -115,6 +115,6 @@
     }, 
     "custom/launcher": {
       "format": "󱄅",
-      "on-click": "rofi -show drun &",
+      "on-click": "rofi -show drun & focus-rofi",
     },
 }

@@ -52,6 +52,7 @@
       (pkgs.callPackage ./rofi/rofi-wpa { })
       (pkgs.callPackage ./rofi/rofi-mixer { })
       (pkgs.callPackage ./rofi/rofi-backup { })
+      (pkgs.callPackage ./rofi/focus-rofi { })
       waybar
       libnotify
       dunst
