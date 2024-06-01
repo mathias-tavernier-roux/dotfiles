@@ -25,8 +25,6 @@
     fira-code-symbols
     liberation_ttf
     mplus-outline-fonts.githubRelease
-    noto-fonts
-    noto-fonts-cjk
     noto-fonts-emoji
     nerdfonts
     terminus-nerdfont
@@ -34,11 +32,9 @@
     dejavu_fonts
     hackgen-nf-font
     proggyfonts
-    google-fonts
     wine64Packages.fonts
     corefonts
     vistafonts
-    font-awesome
     material-icons
     material-design-icons
   ];
@@ -62,14 +58,13 @@
       zip
       unzip
       winetricks
-      wine-staging
+      wineWowPackages.stable
       fish
       fishPlugins.bobthefish
       killall
       bc
       tmux
       pciutils
-      polkit
       nix-direnv
       fishPlugins.bass
       droidcam
@@ -77,20 +72,16 @@
 
       ### System -------------------------------------------------- ###
       modemmanager
-      feh
       gdu
       xdotool
       wpgtk
       swaylock-effects
       ldacbt
-      xwaylandvideobridge
       coreutils
       v4l-utils
 
       ### Dev ----------------------------------------------------- ###
-      jdk19
       virt-manager
-      mysql-workbench
       neovim
       lazygit
       (pkgs.callPackage ./ide { })

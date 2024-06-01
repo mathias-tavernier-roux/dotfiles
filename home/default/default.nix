@@ -57,7 +57,6 @@
       dunst
       btop
       xdg-user-dirs
-      pywal
       acpi
       maim
       xclip
@@ -76,7 +75,6 @@
       pulseaudio
 
       ### Messaging ----------------------------------------------- ###
-      telegram-desktop
       vesktop 
       linuxKernel.packages.linux_latest_libre.v4l2loopback
 
@@ -90,7 +88,6 @@
       prismlauncher
 
       ### Misc ---------------------------------------------------- ###
-      pinta
       krita
       neofetch
       libreoffice
@@ -115,14 +112,12 @@
       galculator
       flatpak
       lazygit
-      git-lfs
       mpd
       calc
       remmina
       pywal
       swaybg
       imagemagick
-      wineWowPackages.waylandFull
       freerdp
       sshfs
     ];
