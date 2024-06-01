@@ -53,11 +53,6 @@
   programs = {
     home-manager.enable = true;
     ## ------------------------------------------------------------- ##
-    bat = {
-      enable = true;
-      config.theme = "base16";
-    };
-    ## ------------------------------------------------------------- ##
     dircolors.enable = true;
     ## ------------------------------------------------------------- ##
     obs-studio = {
@@ -71,7 +66,6 @@
       enableZshIntegration = true;
     };
     ## ------------------------------------------------------------- ##
-    feh.enable = true;
     lazygit.enable = true;
     neovim = {
       extraPackages = with pkgs; [

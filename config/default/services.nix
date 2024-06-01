@@ -13,11 +13,6 @@
     openssh.enable = true;
     mpd.enable = true;
     ## ------------------------------------------------------------- ##
-    mysql = {
-      enable = true;
-      package = pkgs.mariadb;
-    };
-    ## ------------------------------------------------------------- ##
     pipewire = {
       enable = true;
       alsa.enable = true;
