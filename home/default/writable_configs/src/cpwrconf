@@ -19,9 +19,8 @@ no() {
 
 # Copy writable config
 CONFIGS_TO_COPY=(
-  ~/.config/Vencord
+  ~/.config/VencordDesktop/VencordDesktop
   ~/.config/libreoffice
-  ~/.config/background.png
   ~/.config/kitty
   ~/.config/rofi
   ~/.config/waybar
@@ -50,5 +49,5 @@ lvim_install() {
   )
 }
 
-[ ! -d "${HOME}/.config/lvim/" ] \
+[ ! -f "${HOME}/.local/bin/lvim" ] \
   && lvim_install
