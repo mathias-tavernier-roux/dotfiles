@@ -78,12 +78,10 @@
       ### Messaging ----------------------------------------------- ###
       telegram-desktop
       vesktop 
-      xwaylandvideobridge
       linuxKernel.packages.linux_latest_libre.v4l2loopback
 
       ### Dev ----------------------------------------------------- ###
       jetbrains.phpstorm
-      jetbrains.pycharm-professional
       vscode
       kitty
       python311
