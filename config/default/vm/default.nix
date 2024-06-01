@@ -295,9 +295,9 @@ then {
         chmod 755 /var/lib/libvirt/{hooks,qemu,storage}
 
         if [ ! -f ${vm.diskPath}/${vm.name}.qcow2 ]; then
-          # qemu-img create \
-          #  -f qcow2 ${vm.diskPath}/${vm.name}.qcow2 \
-          #  ${(toString vm.diskSize)}G
+          qemu-img create \
+            -f qcow2 ${vm.diskPath}/${vm.name}.qcow2 \
+            ${(toString vm.diskSize)}G
 
           echo "test"
         fi
