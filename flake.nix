@@ -132,8 +132,8 @@
             cores = 2;
             threads = 2;
             memory = 8;
-            diskSize = 128;
-            diskPath = "/home/${username}/VM/Disk";
+            diskSize = 512;
+            diskPath = "/var/lib/libvirt/images";
             restartDm = false;
             videoVirtio = true;
             blacklistPcie = false;
