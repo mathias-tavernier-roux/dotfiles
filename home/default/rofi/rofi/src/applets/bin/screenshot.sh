@@ -49,6 +49,7 @@ fi
 
 # Rofi CMD
 rofi_cmd() {
+  focus-rofi &
 	rofi -theme-str "window {width: $win_width;}" \
 		-theme-str "listview {columns: $list_col; lines: $list_row;}" \
 		-theme-str 'textbox-prompt-colon {str: "";}' \

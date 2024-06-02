@@ -45,6 +45,7 @@ fi
 
 # Rofi CMD
 rofi_cmd() {
+  focus-rofi &
 	rofi -theme-str "listview {columns: $list_col; lines: $list_row;}" \
 		-theme-str 'textbox-prompt-colon {str: "";}' \
 		-dmenu \
@@ -56,11 +57,13 @@ rofi_cmd() {
 
 # Pass variables to rofi dmenu
 run_rofi() {
+  focus-rofi &
 	echo -e "$option_1\n$option_2\n$option_3\n$option_4\n$option_5\n$option_6" | rofi_cmd
 }
 
 # Confirmation CMD
 confirm_cmd() {
+  focus-rofi &
 	rofi -theme-str 'window {location: center; anchor: center; fullscreen: false; width: 350px;}' \
 		-theme-str 'mainbox {orientation: vertical; children: [ "message", "listview" ];}' \
 		-theme-str 'listview {columns: 2; lines: 1;}' \
