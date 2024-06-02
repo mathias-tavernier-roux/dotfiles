@@ -84,6 +84,7 @@
       vscode
       kitty
       python311
+      nodejs
 
       ### Games --------------------------------------------------- ###
       prismlauncher
