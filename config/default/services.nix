@@ -11,6 +11,7 @@
     tumbler.enable = true;
     openssh.enable = true;
     mpd.enable = true;
+    blueman.enable = true;
     ## ------------------------------------------------------------- ##
     pipewire = {
       enable = true;
@@ -128,6 +129,11 @@
     bluetooth = {
       enable = true;
       powerOnBoot = true;
+      settings = {
+        General = {
+          Enable = "Source,Sink,Media,Socket";
+        };
+      };
     };
   };
   # ------------------------------------------------------------------ #
