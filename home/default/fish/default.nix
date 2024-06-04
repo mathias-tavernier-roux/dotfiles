@@ -7,6 +7,7 @@
     enable = true;
     shellAliases = {
       lvim = "~/.local/bin/lvim";
+      ssh = "kitty +kitten ssh";
     };
   };
 #######################################################################
