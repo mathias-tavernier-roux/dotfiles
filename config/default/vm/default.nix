@@ -295,11 +295,10 @@ then {
         chmod 755 /var/lib/libvirt/{hooks,qemu,storage}
 
         if [ ! -f ${vm.diskPath}/${vm.name}.qcow2 ]; then
+	  mkdir -p ${vm.diskPath}
           qemu-img create \
             -f qcow2 ${vm.diskPath}/${vm.name}.qcow2 \
             ${(toString vm.diskSize)}G
-
-          echo "test"
         fi
 
         # Copy hook files
