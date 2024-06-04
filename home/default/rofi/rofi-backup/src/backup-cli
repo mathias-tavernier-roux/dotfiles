@@ -1,7 +1,6 @@
 #!/usr/bin/env sh
 
-LOCAL_IP="192.168.1.19"
-NET_DOMAINE="home.gabriel-guillou.fr"
+source ${HOME}/.config/backup-cli.sh
 
 SSH_USER="gabriel"
 LOCAL_UID=$(id -u)
@@ -67,7 +66,11 @@ ping_check() {
     VALIDATION=false
 
     if [ "${1}x" != "x" ]; then
-      PING_TEST="$(ping -c 1 ${1} | grep reçus | cut -d " " -f 3)"
+      PING_TEST="$(
+        ping -c 1 ${1} 2> /dev/null \
+          | grep reçus \
+          | cut -d " " -f 3
+      )"
 
       [ "${PING_TEST}x" == "1x" ] \
         && VALIDATION=true
@@ -78,14 +81,10 @@ ping_check() {
 
   RUN=true
   while ${RUN}; do
-    LOCAL_PING_TEST=$(check ${LOCAL_IP})
-    if [ ${LOCAL_PING_TEST} ]; then
+    if [ "$(check ${LOCAL_IP})x" == "truex" ]; then
       ${1}
       RUN=false
-    else
-      NET_PING_TEST=$(check ${NET_DOMAINE})
-      ! [ ${NET_PING_TEST} ] && continue
-
+    elif [ "$(check ${NET_DOMAINE})x" == "truex" ]; then
       ${2}
       RUN=false
     fi
@@ -106,7 +105,8 @@ mount_share() {
   }
 
   IS_MOUNTED="$(
-    mountpoint ${LOCAL_SHARE_PATH} | grep "est un point de montage"
+    mountpoint ${LOCAL_SHARE_PATH} 2> /dev/null \
+      | grep "est un point de montage"
   )"
 
   [ -d ${LOCAL_SHARE_PATH} ] \
