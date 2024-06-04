@@ -85,6 +85,7 @@
       kitty
       python311
       nodejs
+      gnumake
 
       ### Games --------------------------------------------------- ###
       prismlauncher
