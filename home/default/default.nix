@@ -94,6 +94,7 @@
       krita
       neofetch
       libreoffice
+      onlyoffice-bin_latest
       gnome.file-roller
       qpdfview
       mpv
@@ -110,6 +111,7 @@
       slurp
       jq
       (pkgs.callPackage ./hyprshot { })
+      wineWowPackages.wayland
 
       ### Utils --------------------------------------------------- ###
       galculator
