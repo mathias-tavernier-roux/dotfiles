@@ -111,7 +111,7 @@
       slurp
       jq
       (pkgs.callPackage ./hyprshot { })
-      wineWowPackages.wayland
+      wineWowPackages.waylandFull
 
       ### Utils --------------------------------------------------- ###
       galculator
