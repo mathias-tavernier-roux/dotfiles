@@ -1,5 +1,25 @@
 { pkgs, ... }:
-{
+let
+  custonFonts = with pkgs; [
+    dina-font
+    fira-code
+    fira-code-symbols
+    liberation_ttf
+    mplus-outline-fonts.githubRelease
+    noto-fonts-emoji
+    nerdfonts
+    terminus-nerdfont
+    inconsolata-nerdfont
+    dejavu_fonts
+    hackgen-nf-font
+    proggyfonts
+    wine64Packages.fonts
+    corefonts
+    vistafonts
+    material-icons
+    material-design-icons
+  ];
+in {
 ############
 # Settings #
 #######################################################################
@@ -19,25 +39,8 @@
 #########
 # Fonts #
 #######################################################################
-  fonts.packages = with pkgs; [
-    dina-font
-    fira-code
-    fira-code-symbols
-    liberation_ttf
-    mplus-outline-fonts.githubRelease
-    noto-fonts-emoji
-    nerdfonts
-    terminus-nerdfont
-    inconsolata-nerdfont
-    dejavu_fonts
-    hackgen-nf-font
-    proggyfonts
-    wine64Packages.fonts
-    corefonts
-    vistafonts
-    material-icons
-    material-design-icons
-  ];
+  nixpkgs.config.allowUnfreePredicate = custonFonts;
+  fonts.packages = custonFonts;
 ###########
 # Package #
 #######################################################################
@@ -58,7 +61,6 @@
       zip
       unzip
       winetricks
-      wineWowPackages.stable
       fish
       fishPlugins.bobthefish
       killall
