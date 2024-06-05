@@ -15,7 +15,6 @@
     initrd.kernelModules = [ "amdgpu" ];
 
     supportedFilesystems = [ "ntfs" ];
-    kernelPackages = pkgs.linuxPackages_latest;
   };
 
   hardware.cpu.amd.updateMicrocode =

@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 {
   boot = {
-    kernelPackages = pkgs.linuxPackages_6_1;
-
     kernelParams = [
       "amd_iommu=on"
       "radeon.si_support=0"
