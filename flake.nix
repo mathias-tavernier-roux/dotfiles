@@ -16,6 +16,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixachupkgs.url = "github:NixAchu/nixachupkgs";
     ## ------------------------------------------------------------- ##
     hosts.url = "github:StevenBlack/hosts";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
@@ -35,6 +36,7 @@
     nixos-hardware,
     home-manager,
     hosts,
+    nixachupkgs,
     ...
   } @inputs: let
     username = "gabriel";
@@ -48,9 +50,12 @@
       config.allowUnfree = true;
     };
     pkgs = import nixpkgs (pkgs-settings // {
-      overlays = [(_: _: {
-        unstable = import nixpkgs-unstable pkgs-settings;
-      })];
+      overlays = [
+        (_: _: {
+          unstable = import nixpkgs-unstable pkgs-settings;
+        })
+        nixachupkgs.overlays.default
+      ];
     });
 
     computers = applyAttrNames {
