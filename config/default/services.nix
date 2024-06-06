@@ -124,10 +124,25 @@
   };
   # ------------------------------------------------------------------ #
   hardware = {
+    enableAllFirmware = true;
     xpadneo.enable = true;
+    ## -------------------------------------------------------------- ##
     bluetooth = {
       enable = true;
       powerOnBoot = true;
+      input.General = {
+        ClassicBondedOnly = false;
+        IdleTimeout = 30;
+      };
+      ### ---------------------------------------------------------- ###
+      settings = {
+        Policy.AutoEnable = "true";
+        General = {
+          Enable = "Source,Sink,Media,Socket";
+          ControllerMode = "dual";
+          FastConnectable = "true";
+        };
+      };
     };
   };
   # ------------------------------------------------------------------ #

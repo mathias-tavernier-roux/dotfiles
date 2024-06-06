@@ -81,6 +81,9 @@ in {
       ldacbt
       coreutils
       v4l-utils
+      bluez-tools
+      bluez-alsa
+      bluetuith
 
       ### Dev ----------------------------------------------------- ###
       virt-manager
