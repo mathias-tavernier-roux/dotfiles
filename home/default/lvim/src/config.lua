@@ -9,6 +9,7 @@ vim.opt.tabstop = 2
 vim.opt.relativenumber = false
 vim.wo.colorcolumn = "80"
 vim.opt.cursorline = true
+vim.opt.termguicolors = true
 
 -- general
 lvim.log.level = "info"
