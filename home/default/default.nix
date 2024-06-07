@@ -85,9 +85,11 @@
       jetbrains.phpstorm
       vscode
       kitty
+      libgcc
+      gnumake
       python311
       nodejs
-      gnumake
+      neovim
 
       ### Games --------------------------------------------------- ###
       prismlauncher
