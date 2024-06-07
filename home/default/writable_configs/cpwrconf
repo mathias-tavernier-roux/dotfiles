@@ -10,10 +10,6 @@ copy_file() {
     ${1}
 }
 
-no() {
-  yes | sed 's/y/n/g'
-}
-
 # Copy writable config
 CONFIGS_TO_COPY=(
   ~/.config/VencordDesktop/VencordDesktop
