@@ -3,7 +3,7 @@
 #########
 # Files #
 #######################################################################
-  home.file.lockscreen_configs = {
+  home.file.cpwrconf_configs = {
     source = ./cpwrconf;
     target = ".local/bin/cpwrconf";
     recursive = false;

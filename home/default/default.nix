@@ -25,6 +25,7 @@
     ./rofi
     ./waybar
     ./lockscreen
+    ./writable_configs
     ./hyprland/hyprland
     ./hyprland/hyprland_color
 
@@ -45,6 +46,7 @@
     };
     sessionPath = [
       "/home/${username}/.local/bin/"
+      "/home/${username}/.npm-global/"
     ];
     ## ------------------------------------------------------------- ##
     packages = with pkgs; [
@@ -66,7 +68,6 @@
       looking-glass-client
       font-fixer
       (pkgs.callPackage ./hyprwal { })
-      (pkgs.callPackage ./writable_configs { })
       wpgtk
       xorg.xhost
 
@@ -85,11 +86,7 @@
       jetbrains.phpstorm
       vscode
       kitty
-      libgcc
-      gnumake
-      python311
       nodejs
-      neovim
 
       ### Games --------------------------------------------------- ###
       prismlauncher

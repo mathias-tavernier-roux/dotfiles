@@ -44,11 +44,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1717767104,
-        "narHash": "sha256-G2IEgYqaX3lrsCOvo7Cpm2GIYyL3EiDixf/xiHkEPEE=",
+        "lastModified": 1717778593,
+        "narHash": "sha256-jV+WjdeL9To5wW8QPiA9iWEtbRMffApD7xxGVs6JFNQ=",
         "owner": "NixAchu",
         "repo": "nixachupkgs",
-        "rev": "a3861aa51484c0eb7faa0cd7f24c013e1f7ce9a7",
+        "rev": "9dfa880481c89468decae7a1539e71e60e63dcc5",
         "type": "github"
       },
       "original": {

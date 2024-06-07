@@ -10,6 +10,9 @@ copy_file() {
     ${1}
 }
 
+mkdir -p ~/.npm-global
+npm set prefix ~/.npm-global
+
 # Copy writable config
 CONFIGS_TO_COPY=(
   ~/.config/VencordDesktop/VencordDesktop
