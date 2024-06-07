@@ -89,7 +89,7 @@ in {
       virt-manager
       neovim
       lazygit
-      (pkgs.callPackage ./ide { })
+      ide
       man-pages
       man-pages-posix
       wireguard-tools

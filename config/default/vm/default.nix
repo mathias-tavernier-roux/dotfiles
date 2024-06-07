@@ -44,8 +44,8 @@ then {
     ];
   };
 
-  environment.systemPackages = [
-    (pkgs.callPackage ./rofi-vm { })
+  environment.systemPackages = with pkgs; [
+    rofi-vm
   ];
 
   services = {

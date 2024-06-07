@@ -22,9 +22,9 @@
 
     ## System ------------------------------------------------------ ##
     ./fish
-    ./rofi/rofi
+    ./rofi
     ./waybar
-    ./lockscreen/configs
+    ./lockscreen
     ./hyprland/hyprland
     ./hyprland/hyprland_color
 
@@ -43,16 +43,18 @@
     sessionVariables = {
       EDITOR = "ide";
     };
+    sessionPath = [
+      "/home/${username}/.local/bin/"
+    ];
     ## ------------------------------------------------------------- ##
     packages = with pkgs; [
       ### Settings ------------------------------------------------ ###
       brightnessctl
-      rofi
+      rofi-wayland
       rofi-bluetooth
-      (pkgs.callPackage ./rofi/rofi-wpa { })
-      (pkgs.callPackage ./rofi/rofi-mixer { })
-      (pkgs.callPackage ./rofi/rofi-backup { })
-      (pkgs.callPackage ./rofi/focus-rofi { })
+      rofi-wpa
+      rofi-mixer
+      backup-cli
       waybar
       libnotify
       dunst
@@ -62,7 +64,7 @@
       maim
       xclip
       looking-glass-client
-      (pkgs.callPackage ./lockscreen/package { })
+      font-fixer
       (pkgs.callPackage ./hyprwal { })
       (pkgs.callPackage ./writable_configs { })
       wpgtk
@@ -71,7 +73,7 @@
       ### Volume -------------------------------------------------- ###
       pavucontrol
       rofi-pulse-select
-      (pkgs.callPackage ./rofi/rofi-beats { })
+      rofi-beats
       easyeffects
       pulseaudio
 
@@ -89,7 +91,7 @@
 
       ### Games --------------------------------------------------- ###
       prismlauncher
-      (pkgs.callPackage ./citra { })
+      citra
 
       ### Misc ---------------------------------------------------- ###
       krita
@@ -98,20 +100,13 @@
       onlyoffice-bin_latest
       gnome.file-roller
       qpdfview
-      mpv
       mpc-cli
-      youtube-dl
       firefox
       vim
       viewnior
       cinnamon.nemo-with-extensions
-      wf-recorder
-      wl-clipboard
-      ffmpeg
-      grim
-      slurp
-      jq
-      (pkgs.callPackage ./hyprshot { })
+      rofi-hyprshot
+      rofi-power
       wineWowPackages.waylandFull
 
       ### Utils --------------------------------------------------- ###

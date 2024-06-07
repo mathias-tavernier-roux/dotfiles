@@ -111,7 +111,7 @@
     },
     "custom/power-menu": {
       "format": "⏻",
-      "on-click": "~/.config/rofi/powermenu/run.sh &",
+      "on-click": "rofi-power",
     }, 
     "custom/launcher": {
       "format": "󱄅",
