@@ -16,7 +16,6 @@
     ./btop
     ./tmux
     ./git
-    ./lvim
     ./libreoffice
     ./vencord
 
@@ -57,7 +56,6 @@
       rofi-wpa
       rofi-mixer
       backup-cli
-      waybar
       libnotify
       dunst
       btop
@@ -68,7 +66,6 @@
       looking-glass-client
       font-fixer
       (pkgs.callPackage ./hyprwal { })
-      wpgtk
       xorg.xhost
 
       ### Volume -------------------------------------------------- ###
@@ -116,7 +113,6 @@
       calc
       remmina
       pywal
-      swaybg
       imagemagick
       freerdp
       sshfs

@@ -26,6 +26,7 @@ main() {
   wpg -A ${WALPAPER}
   wpg -s ${WALPAPER}
   source ~/.cache/wal/colors.sh
+  cp ~/.cache/wal/colors-kitty.conf ~/.config/kitty/colors-kitty.conf 
 
   # Replace color with #
   FILES=(
