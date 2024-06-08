@@ -89,7 +89,9 @@
         clang-tools
         llvmPackages_latest.clang
         vimPlugins.none-ls-nvim
-        vimPlugins.nvim-treesitter
+        (vimPlugins.nvim-treesitter.withPlugins (plugins: [
+          plugins.tree-sitter-nix
+        ]))
         nil
       ];
       enable = true;
