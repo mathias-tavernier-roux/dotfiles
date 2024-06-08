@@ -88,6 +88,8 @@
       extraPackages = with pkgs; [
         clang-tools
         llvmPackages_latest.clang
+        vimPlugins.none-ls-nvim
+        vimPlugins.nvim-treesitter
         nil
       ];
       enable = true;

@@ -17,8 +17,8 @@
       target = ".bashrc";
     };
     vimrc = {
-      source = ./src/.vimrc;
-      target = ".vimrc";
+      source = ./src/.nvimrc;
+      target = ".nvimrc";
     };
     onedark_prompt = {
       source = ./src/.onedark_prompt.sh;

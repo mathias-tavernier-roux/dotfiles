@@ -108,13 +108,10 @@
       ### Utils --------------------------------------------------- ###
       galculator
       flatpak
-      lazygit
       mpd
       calc
       remmina
-      pywal
       imagemagick
-      freerdp
       sshfs
     ];
   };
