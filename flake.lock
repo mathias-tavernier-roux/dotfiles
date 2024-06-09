@@ -26,11 +26,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1717449440,
-        "narHash": "sha256-QtSCQFBhyQIsKJhOvcIOi+9EN1kEnNeoLo3PeQ5VbIY=",
+        "lastModified": 1717861551,
+        "narHash": "sha256-8wolGw60hKNa++YO57FXL8/g5U84VgINoQAZ3ppe0ME=",
         "owner": "StevenBlack",
         "repo": "hosts",
-        "rev": "e1a7b23e9769607009d741066b5789a99aaf9923",
+        "rev": "846f528dfc591a647a36462ec1f8bf3453fa0c35",
         "type": "github"
       },
       "original": {
@@ -44,11 +44,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1717852982,
-        "narHash": "sha256-EP0A8HLTjWgmW7uVBAz6Lq8rg6xVcvbRbGgEia3UhhA=",
+        "lastModified": 1717896439,
+        "narHash": "sha256-Sj+wj2IDJey7SjR6cCF8sgI3Ukll+yai58VKf8nvWsM=",
         "owner": "NixAchu",
         "repo": "nixachupkgs",
-        "rev": "44b32eeb4e985c218cdc7bbb57d5a34917b3cead",
+        "rev": "0bbea06da645e82af93ad847e36adb342f74bab2",
         "type": "github"
       },
       "original": {
@@ -86,11 +86,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1717602782,
-        "narHash": "sha256-pL9jeus5QpX5R+9rsp3hhZ+uplVHscNJh8n8VpqscM0=",
+        "lastModified": 1717786204,
+        "narHash": "sha256-4q0s6m0GUcN7q+Y2DqD27iLvbcd1G50T2lv08kKxkSI=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e8057b67ebf307f01bdcc8fba94d94f75039d1f6",
+        "rev": "051f920625ab5aabe37c920346e3e69d7d34400e",
         "type": "github"
       },
       "original": {
