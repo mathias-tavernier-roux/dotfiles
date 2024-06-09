@@ -84,18 +84,6 @@
     };
     ## ------------------------------------------------------------- ##
     lazygit.enable = true;
-    neovim = {
-      extraPackages = with pkgs; [
-        clang-tools
-        llvmPackages_latest.clang
-        vimPlugins.none-ls-nvim
-        (vimPlugins.nvim-treesitter.withPlugins (plugins: [
-          plugins.tree-sitter-nix
-        ]))
-        nil
-      ];
-      enable = true;
-    };
   };
 #######################################################################
 }
