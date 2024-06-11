@@ -1,4 +1,5 @@
-{ config, pkgs, ... }:
+{ username }:
+{ config, pkgs, lib, ... }:
 {
   networking.extraHosts = ''
     10.193.48.101 worktogether.dev
@@ -20,4 +21,21 @@
   };
   environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; }; # Force intel-media-driver
   hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ intel-vaapi-driver ];
+
+  virtualisation.virtualMachines = {
+    enable = true;
+    username = username;
+    sambaAccess.enable = true;
+
+    machines = [
+      {
+        hardware = {
+          disk = {
+            size = 512;
+            path = "/var/lib/libvirt/images";
+          };
+        };
+      }
+    ];
+  };
 }

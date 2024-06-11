@@ -30,7 +30,6 @@
 # Variables #
 #######################################################################
   outputs = {
-    self,
     nixpkgs,
     nixpkgs-unstable,
     nixos-hardware,
@@ -38,7 +37,7 @@
     hosts,
     nixachupkgs,
     ...
-  } @inputs: let
+  }: let
     username = "gabriel";
     system = "x86_64-linux";
     hostname = "NixAchu";
@@ -61,139 +60,20 @@
     computers = applyAttrNames {
       "${hostname}-Fix" = self: {
         hostname = "${self}";
-        vms = [
-          {
-            name = "win11";
-            os = "win11";
-            ssdEmulation = true;
-            isoName = "win11.iso";
-            cores = 4;
-            threads = 2;
-            memory = 12;
-            diskSize = 512;
-            diskPath = "/var/lib/libvirt/images";
-            restartDm = false;
-            videoVirtio = false;
-            blacklistPcie = false;
-            pcies = [
-            {
-              pcie = {
-                vmBus = "09";
-                bus = "01";
-                slot = "00";
-                function = "0";
-              };
-              driver = ''nouveau'';
-              blacklistDriver = true;
-              blacklistPcie = false;
-            }
-            {
-              pcie = {
-                vmBus = "09";
-                bus = "01";
-                slot = "00";
-                function = "1";
-              };
-              driver = ''nouveau'';
-              blacklistDriver = true;
-              blacklistPcie = false;
-            }
-            {
-              pcie = {
-                vmBus = "09";
-                bus = "01";
-                slot = "00";
-                function = "2";
-              };
-              driver = ''nouveau'';
-              blacklistDriver = true;
-              blacklistPcie = false;
-            }
-            {
-              pcie = {
-                vmBus = "09";
-                bus = "01";
-                slot = "00";
-                function = "3";
-              };
-              driver = ''nouveau'';
-              blacklistDriver = true;
-              blacklistPcie = false;
-            }
-            ];
-          }
-        ];
         modules = [];
       };
       ### --------------------------------------------------------- ### 
       "${hostname}-Lap" = self: {
         hostname = "${self}";
-        vms =  [
-          {
-            name = "win11";
-            os = "win11";
-            ssdEmulation = true;
-            isoName = "win11.iso";
-            cores = 2;
-            threads = 2;
-            memory = 8;
-            diskSize = 512;
-            diskPath = "/var/lib/libvirt/images";
-            restartDm = false;
-            videoVirtio = true;
-            blacklistPcie = false;
-            pcies = false;
-          }
-        ];
         modules = [
           nixos-hardware.nixosModules.asus-battery
-            nixos-hardware.nixosModules.common-cpu-intel
-            nixos-hardware.nixosModules.common-pc
-            nixos-hardware.nixosModules.common-pc-ssd
+          nixos-hardware.nixosModules.common-cpu-intel
+          nixos-hardware.nixosModules.common-pc
+          nixos-hardware.nixosModules.common-pc-ssd
         ];
       };
       "${hostname}-Fra" = self: {
-        hostname = "${hostname}-Lap";
-        vms = [
-          {
-            name = "win11";
-            os = "win11";
-            ssdEmulation = true;
-            isoName = "win11.iso";
-            cores = 5;
-            threads = 2;
-            memory = 20;
-            diskSize = 128;
-            diskPath = "/home/${username}/VM/Disk";
-            restartDm = false;
-            videoVirtio = false;
-            blacklistPcie = "1002:7480,1002:ab30";
-            pcies = [
-            {
-              pcie = {
-                vmBus = "09";
-                bus = "03";
-                slot = "00";
-                function = "0";
-              };
-              driver = "amdgpu";
-              blacklistDriver = false;
-              blacklistPcie = true;
-            }
-            {
-              pcie = {
-                vmBus = "09";
-                bus = "03";
-                slot = "00";
-                function = "1";
-              };
-              driver = "amdgpu";
-              blacklistDriver = false;
-              blacklistPcie = true;
-            }
-            ];
-          }
-        ];
+        hostname = "${self}";
         modules = [
           nixos-hardware.nixosModules.common-cpu-intel
           nixos-hardware.nixosModules.common-pc
@@ -203,6 +83,7 @@
     };
     ## ------------------------------------------------------------- ##
     default_modules = [
+      nixachupkgs.nixosModules.virtualMachines
       hosts.nixosModule {
         networking.stevenBlackHosts = {
           blockFakenews = true;
@@ -228,7 +109,7 @@
       modules = default_modules ++ computers."${name}".modules ++ [
         (import ./computer.nix {
           computer = computers."${name}";
-          inherit username home-manager;
+          inherit username home-manager; 
         })
       ];
     }));

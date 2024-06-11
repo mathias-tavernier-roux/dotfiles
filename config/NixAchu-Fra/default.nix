@@ -1,4 +1,5 @@
-{ config, pkgs, ... }:
+{ username }:
+{ config, pkgs, lib, ... }:
 {
   boot = {
     kernelParams = [
@@ -39,4 +40,40 @@
   };
 
   services.xserver.videoDrivers = [ "amdgpu" ];
+
+  virtualisation.virtualMachines = {
+    enable = true;
+    username = username;
+    sambaAccess.enable = true;
+
+    machines = [
+      {
+        hardware = {
+          cores = 5;
+          memory = 20;
+        };
+
+        passthrough = {
+          enable = true;
+          pcies = [
+            {
+              lines = {
+                bus = "03";
+                slot = "00";
+                functions = [
+                  "0"
+                  "1"
+                ];
+                ids = [
+                  "1002:7480"
+                  "1002:ab30"
+                ];
+              };
+              driver = ''amdgpu'';
+            }
+          ];
+        };
+      }
+    ];
+  };
 }

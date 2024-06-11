@@ -8,7 +8,9 @@
     (import ./default {
       inherit computer username;
     })
-    ./${computer.hostname}
+    (import ./${computer.hostname} {
+      inherit username;
+    })
   ];
 #######################################################################
 }
