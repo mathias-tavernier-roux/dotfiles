@@ -67,6 +67,7 @@
       font-fixer
       (pkgs.callPackage ./hyprwal { })
       xorg.xhost
+      global-fullscreen
 
       ### Volume -------------------------------------------------- ###
       pavucontrol
