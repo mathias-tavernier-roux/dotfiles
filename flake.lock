@@ -39,24 +39,6 @@
         "type": "github"
       }
     },
-    "nixachupkgs": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_2"
-      },
-      "locked": {
-        "lastModified": 1718281608,
-        "narHash": "sha256-uCgoyrdNf1KnjFSJK3jVnHgo1Lb2glYbnBRGh8kCjvI=",
-        "owner": "NixAchu",
-        "repo": "nixachupkgs",
-        "rev": "ca5ff3f49d3dcb718c1e790dbab07dd37e2291ea",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixAchu",
-        "repo": "nixachupkgs",
-        "type": "github"
-      }
-    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1718265846,
@@ -102,22 +84,6 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1717555607,
-        "narHash": "sha256-WZ1s48OODmRJ3DHC+I/DtM3tDRuRJlNqMvxvAPTD7ec=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "0b8e7a1ae5a94da2e1ee3f3030a32020f6254105",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-24.05",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_3": {
-      "locked": {
         "lastModified": 1718208800,
         "narHash": "sha256-US1tAChvPxT52RV8GksWZS415tTS7PV42KTc2PNDBmc=",
         "owner": "NixOS",
@@ -132,14 +98,48 @@
         "type": "github"
       }
     },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1717555607,
+        "narHash": "sha256-WZ1s48OODmRJ3DHC+I/DtM3tDRuRJlNqMvxvAPTD7ec=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "0b8e7a1ae5a94da2e1ee3f3030a32020f6254105",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-24.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "revolunixpkgs": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1718281608,
+        "narHash": "sha256-uCgoyrdNf1KnjFSJK3jVnHgo1Lb2glYbnBRGh8kCjvI=",
+        "owner": "RevoluNix",
+        "repo": "revolunixpkgs",
+        "rev": "ca5ff3f49d3dcb718c1e790dbab07dd37e2291ea",
+        "type": "github"
+      },
+      "original": {
+        "owner": "RevoluNix",
+        "repo": "revolunixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "hosts": "hosts",
-        "nixachupkgs": "nixachupkgs",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs_3",
-        "nixpkgs-unstable": "nixpkgs-unstable"
+        "nixpkgs": "nixpkgs_2",
+        "nixpkgs-unstable": "nixpkgs-unstable",
+        "revolunixpkgs": "revolunixpkgs"
       }
     }
   },

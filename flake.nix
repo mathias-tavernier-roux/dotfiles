@@ -16,7 +16,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixachupkgs.url = "github:NixAchu/nixachupkgs";
+    revolunixpkgs.url = "github:RevoluNix/revolunixpkgs";
     ## ------------------------------------------------------------- ##
     hosts.url = "github:StevenBlack/hosts";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
@@ -35,7 +35,7 @@
     nixos-hardware,
     home-manager,
     hosts,
-    nixachupkgs,
+    revolunixpkgs,
     ...
   }: let
     username = "gabriel";
@@ -53,7 +53,7 @@
         (_: _: {
           unstable = import nixpkgs-unstable pkgs-settings;
         })
-        nixachupkgs.overlays.default
+        revolunixpkgs.overlays.default
       ];
     });
 
@@ -83,7 +83,7 @@
     };
     ## ------------------------------------------------------------- ##
     default_modules = [
-      nixachupkgs.nixosModules.virtualMachines
+      revolunixpkgs.nixosModules.virtualMachines
       hosts.nixosModule {
         networking.stevenBlackHosts = {
           blockFakenews = true;
