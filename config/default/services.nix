@@ -12,6 +12,7 @@
     openssh.enable = true;
     mpd.enable = true;
     blueman.enable = true;
+    fwupd.enable = true;
     ## ------------------------------------------------------------- ##
     pipewire = {
       enable = true;
@@ -132,7 +133,10 @@
       powerOnBoot = true;
       input.General = {
         ClassicBondedOnly = false;
-        IdleTimeout = 30;
+        IdleTimeout = 600;
+        Name = hostname;
+        ControllerMode = "dual";
+        FastConnectable = "true";
       };
       ### ---------------------------------------------------------- ###
       settings = {
