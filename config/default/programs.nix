@@ -93,6 +93,7 @@ in {
       man-pages
       man-pages-posix
       wireguard-tools
+      openvpn
 
       ### Game ---------------------------------------------------- ###
       lutris

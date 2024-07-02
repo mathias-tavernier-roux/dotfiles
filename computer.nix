@@ -15,7 +15,7 @@
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
-        backupFileExtension = "backup";
+        backupFileExtension = "backup2";
         users.${username} = (import ./home {
           inherit username;
           hostname = computer.hostname;

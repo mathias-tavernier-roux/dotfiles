@@ -77,7 +77,7 @@
       pulseaudio
 
       ### Messaging ----------------------------------------------- ###
-      vesktop 
+      (pkgs.unstable.vesktop) 
       linuxKernel.packages.linux_latest_libre.v4l2loopback
 
       ### Dev ----------------------------------------------------- ###
