@@ -16,7 +16,10 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    revolunixpkgs.url = "github:RevoluNix/revolunixpkgs";
+    revolunixpkgs = {
+      url = "github:RevoluNix/revolunixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     ## ------------------------------------------------------------- ##
     hosts.url = "github:StevenBlack/hosts";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
