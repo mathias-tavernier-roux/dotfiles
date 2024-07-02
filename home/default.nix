@@ -1,4 +1,4 @@
-{ hostname, username }:
+{ hostname, username, externalImport }:
 { config, ... }:
 {
 ###########
@@ -9,6 +9,9 @@
       username = username;
     })
     ./${hostname}
+    (import externalImport {
+      inherit hostname username;
+    })
   ];
 #######################################################################
 }

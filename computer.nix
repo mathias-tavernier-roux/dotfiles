@@ -1,4 +1,4 @@
-{ username, computer, home-manager }:
+{ username, hostname, home-manager, configsImports }:
 { config, ... }:
 {
 ###########
@@ -6,19 +6,22 @@
 #######################################################################
   imports = [
     (import ./config {
-      inherit computer username;
+      inherit hostname username;
+      externalImport =
+        configsImports.revolunixos.base.graphical.system;
     })
     ## ------------------------------------------------------------- ##
-    ./hardware/${computer.hostname}.nix
+    ./hardware/${hostname}.nix
     ## ------------------------------------------------------------- ##
     home-manager.nixosModules.home-manager {
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
-        backupFileExtension = "backup2";
         users.${username} = (import ./home {
           inherit username;
-          hostname = computer.hostname;
+          hostname = hostname;
+          externalImport =
+            configsImports.revolunixos.base.graphical.home;
         });
       };
     }

@@ -14,10 +14,8 @@
   };
   # ----------------------------------------------------------------- #
   inputs = {
-    nixpkgs.url = "github:RevoluNix/revolunixpkgs";
-    ## ------------------------------------------------------------- ##
+    nixpkgs.url = "github:RevoluNix/revolunixpkgs/testing";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-    ## ------------------------------------------------------------- ##
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,23 +26,18 @@
 #######################################################################
   outputs = {
     nixos-hardware,
-    home-manager,
     nixpkgs,
+    home-manager,
     ...
   }: let
     username = "gabriel";
     system = "x86_64-linux";
-    hostname = "NixAchu";
+    hostname = "RevoluNixOS";
 
     applyAttrNames = builtins.mapAttrs (name: f: f name);
 
     computers = applyAttrNames {
-      "${hostname}-Fix" = self: {
-        hostname = "${self}";
-        modules = [];
-      };
-      ### --------------------------------------------------------- ### 
-      "${hostname}-Lap" = self: {
+      "${hostname}" = self: {
         hostname = "${self}";
         modules = [
           nixos-hardware.nixosModules.asus-battery
@@ -53,19 +46,11 @@
           nixos-hardware.nixosModules.common-pc-ssd
         ];
       };
-      "${hostname}-Fra" = self: {
-        hostname = "${self}";
-        modules = [
-          nixos-hardware.nixosModules.common-cpu-intel
-          nixos-hardware.nixosModules.common-pc
-          nixos-hardware.nixosModules.common-pc-ssd
-        ];
-      };
     };
     ## ------------------------------------------------------------- ##
     default_modules = [
-      nixpkgs.nixosModules.virtualMachines
-    ] ++ nixpkgs.defaultModules;
+      # nixpkgs.nixosModules.virtualMachines
+    ];
 ##########
 # Config #
 #######################################################################
@@ -80,12 +65,16 @@
       #### ----------------------------------------------------- ####
       inherit system;
       #### ----------------------------------------------------- ####
-      modules = default_modules ++ computers."${name}".modules ++ [
-        (import ./computer.nix {
-          computer = computers."${name}";
-          inherit username home-manager; 
-        })
-      ];
+      modules = default_modules
+        ++ nixpkgs.defaultModules
+        ++ computers."${name}".modules
+        ++ [
+          (import ./computer.nix {
+            configsImports = nixpkgs.configsImports;
+            hostname = computers."${name}".hostname;
+            inherit username home-manager;
+          })
+        ];
     }));
   };
 #######################################################################

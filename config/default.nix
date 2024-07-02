@@ -1,4 +1,4 @@
-{ computer, username }:
+{ hostname, username, externalImport }:
 { config, ... }:
 {
 ###########
@@ -6,10 +6,13 @@
 #######################################################################
   imports = [
     (import ./default {
-      inherit computer username;
+      inherit hostname username;
     })
-    (import ./${computer.hostname} {
+    (import ./${hostname} {
       inherit username;
+    })
+    (import externalImport {
+      inherit hostname username;
     })
   ];
 #######################################################################
