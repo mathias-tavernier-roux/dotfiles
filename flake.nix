@@ -14,7 +14,7 @@
   };
   # ----------------------------------------------------------------- #
   inputs = {
-    nixpkgs.url = "github:RevoluNix/revolunixpkgs/testing";
+    nixpkgs.url = "github:RevoluNix/revolunixpkgs/nightly";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
