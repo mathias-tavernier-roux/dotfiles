@@ -1,4 +1,4 @@
-{ hostname, username, externalImports }:
+{ hostname, users, externalImports }:
 { lib, ... }:
 {
 ###########
@@ -6,20 +6,16 @@
 #######################################################################
   imports = [
     (import ./default {
-      inherit hostname username;
+      inherit hostname users;
     })
 
     (import ./computer/${hostname} {
-      inherit hostname username;
-    })
-
-    (import ./user/${username} {
-      inherit hostname username;
+      inherit hostname users;
     })
 
   ] ++ (lib.forEach externalImports (externalImport:
     (import externalImport {
-      inherit hostname username;
+      inherit hostname users;
     })
   ));
 #######################################################################
