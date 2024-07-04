@@ -30,9 +30,42 @@
     home-manager,
     ...
   }: let
-    username = "gabriel";
     system = "x86_64-linux";
     hostname = "RevoluNixOS";
+    pkgs = nixpkgs.revolunixpkgs;
+
+    users = rec {
+      primaryUser = "gabriel";
+      allUsers = [
+        primaryUser
+      ];
+
+      configs = {
+        home = builtins.listToAttrs
+          (nixpkgs.lib.forEach allUsers (username: {
+            name = username;
+            value = (import ./home {
+              inherit username hostname;
+              externalImports = [
+                nixpkgs.configsImports.revolunixos.base.graphical.home
+              ];
+            });
+          }));
+
+        system = builtins.listToAttrs
+          (nixpkgs.lib.forEach allUsers (username: {
+            name = username;
+            value = {
+              isNormalUser = true;
+              shell = pkgs.fish;
+              extraGroups = [
+                "wheel"
+              ];
+              initialPassword = "admin";
+            };
+          }));
+      };
+    };
 
     applyAttrNames = builtins.mapAttrs (name: f: f name);
 
@@ -48,7 +81,7 @@
       };
     };
     ## ------------------------------------------------------------- ##
-    default_modules = [
+    defaultModules = [
       # nixpkgs.nixosModules.virtualMachines
     ];
 ##########
@@ -60,20 +93,29 @@
     (builtins.attrNames computers)
     (name: nixpkgs.lib.nixosSystem {
       specialArgs = {
-        pkgs = nixpkgs.revolunixpkgs;
+        inherit pkgs;
       };
-      #### ----------------------------------------------------- ####
       inherit system;
-      #### ----------------------------------------------------- ####
-      modules = default_modules
+
+      modules = defaultModules
         ++ nixpkgs.defaultModules
-        ++ computers."${name}".modules
+        ++ computers.${name}.modules
         ++ [
-          (import ./computer.nix {
-            configsImports = nixpkgs.configsImports;
-            hostname = computers."${name}".hostname;
-            inherit username home-manager;
+
+          (import ./system {
+            inherit hostname users;
+            externalImports = [
+              nixpkgs.configsImports.revolunixos.base.graphical.system
+            ];
           })
+
+          ./hardware/${hostname}.nix
+
+          home-manager.nixosModules.home-manager {home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users = users.configs.home;
+          };}
         ];
     }));
   };

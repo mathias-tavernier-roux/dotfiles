@@ -1,4 +1,0 @@
-{ username }:
-{ config, pkgs, lib, ... }:
-{
-}

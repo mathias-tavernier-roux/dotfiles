@@ -1,4 +1,4 @@
-{ hostname, username }:
+{ hostname, users }:
 { config, pkgs, ... }:
 {
 ###########
@@ -6,7 +6,7 @@
 #######################################################################
   imports = [
     (import ./services.nix {
-      inherit username;
+      primaryUser = users.primaryUser;
       hostname = hostname;
     })
     ./programs.nix
@@ -24,14 +24,7 @@
 ########
 # User #
 #######################################################################
-  users.users.${username} = {
-    isNormalUser = true;
-    shell = pkgs.fish;
-    extraGroups = [
-      "wheel"
-    ];
-    initialPassword = "admin";
-  };
+  users.users = users.configs.system;
 ##################
 # Virtualisation #
 #######################################################################
