@@ -41,7 +41,7 @@
       ];
 
       configs = {
-        home = builtins.listToAttrs
+        home = hostname: builtins.listToAttrs
           (nixpkgs.lib.forEach allUsers (username: {
             name = username;
             value = (import ./home {
@@ -97,7 +97,9 @@
       };
       inherit system;
 
-      modules = defaultModules
+      modules = let
+        hostname = name;
+      in defaultModules
         ++ nixpkgs.defaultModules
         ++ computers.${name}.modules
         ++ [
